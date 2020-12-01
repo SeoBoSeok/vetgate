@@ -198,16 +198,214 @@
               $('.health_floor').click();
               $('#health_floor').show().siblings('img').hide();
               // listAjaxCall();
+              var index = "";
             $('.floor_info .fnav > li').click(function(){
-                // $('.cont_bg img').each(function(i, el){
-                //     console.log($(el).css('display'));
-                //     if($(el).css('display') == "block" || $(el).css('display') == "inline") {
-                //         $(el).css('display', 'none');
-                //     }
-                // });
-                console.log($(this));
+                console.log($(index));
+                if($(index).css('display') == "block") {
+                    $(index).css('display', 'none');
+                }
+                index = $(this);
             });
           });
+          $(function() {
+                url = "/wweb/facilities/floor";
+                localStorage.setItem('LOCATION_URL', url.split('/')[1]);
+                onloadwfloor();
+            });
+
+            //로드
+            function onloadwfloor() {
+                listAjaxCall(url, '', function(data){
+                    var mainFloor = -9999;
+                    var healthFloor = -9999;
+                    var kidsFloor = -9999;
+                    
+                    var mainCnt = 0;
+                    var healthCnt = 0;
+                    var kidsCnt = 0;
+                    
+                    var ext = '';
+                    var tmp = '';
+                    var floor = '';
+                    
+                    if (!isEmpty(data.floorList)) {
+                        $(data.floorList).each(function(){
+                            if (this.buildingType == 'M') {
+                                if (mainFloor != this.floorNum) {
+                                    mainFloor = this.floorNum;
+                                    tmp = $('#mainOrg').clone();
+                                    tmp.removeAttr('id');
+
+                                    if (this.floorNum < 0) {
+                                        floor = 'B' + Math.abs(this.floorNum)
+                                    } else if (this.floorNum == 0) { 
+                                        floor = 'L';
+                                        $('#mainOrg').siblings('.on').removeClass('on');
+                                        tmp.addClass('on');
+                                    } else {
+                                        floor = this.floorNum + 'F';
+                                        if ($('#mainOrg').siblings('.on').length == 0 && this.floorNum == 1) {
+                                            tmp.addClass('on')
+                                        }
+                                    }
+
+                                    tmp.find('span:eq(0)').text(floor);
+                                    
+                                    tmp.find('h5').text('본관 ' + floor);
+                                    $('div.main > ul').append(tmp);
+                                    mainCnt++;
+                                }
+                                
+                                tmp = $('div.main > ul > li:last');
+                            } else if (this.buildingType == 'H') {
+                                if (healthFloor != this.floorNum) {
+                                    healthFloor = this.floorNum;
+                                    tmp = $('#centerOrg').clone();
+                                    tmp.removeAttr('id');
+
+                                    if (this.floorNum < 0) {
+                                        floor = 'B' + Math.abs(this.floorNum)
+                                    } else if (this.floorNum == 0) { 
+                                        floor = 'L';
+                                        $('#centerOrg').siblings('.on').removeClass('on');
+                                        tmp.addClass('on');
+                                    } else {
+                                        floor = this.floorNum + 'F';
+                                        if ($('#centerOrg').siblings('.on').length == 0 && this.floorNum == 1) {
+                                            tmp.addClass('on')
+                                        }
+                                    }
+
+                                    tmp.find('span:eq(0)').text(floor);
+                                    
+                                    tmp.find('h5').text('국민건강검진센터 ' + floor);
+                                    $('div.center > ul').append(tmp);
+                                    healthCnt++;
+                                }
+                                
+                                tmp = $('div.center > ul > li:last');
+                            } else if (this.buildingType == 'K') {
+                                if (kidsFloor != this.floorNum) {
+                                    kidsFloor = this.floorNum;
+                                    tmp = $('#kidOrg').clone();
+                                    tmp.removeAttr('id');
+
+                                    if (this.floorNum < 0) {
+                                        floor = 'B' + Math.abs(this.floorNum)
+                                    } else if (this.floorNum == 0) { 
+                                        floor = 'L';
+                                        $('#kidOrg').siblings('.on').removeClass('on');
+                                        tmp.addClass('on');
+                                    } else {
+                                        floor = this.floorNum + 'F';
+                                        if ($('#kidOrg').siblings('.on').length == 0 && this.floorNum == 1) {
+                                            tmp.addClass('on')
+                                        }
+                                    }
+                                    tmp.find('span:eq(0)').text(floor);
+                                    
+                                    tmp.find('h5').text('키즈센터 ' + floor);
+                                    $('div.kid > ul').append(tmp);
+                                    kidsCnt++;
+                                }
+                                
+                                tmp = $('div.kid > ul > li:last');
+                            }
+                            
+                            tmp.find('ul').append('<li><a href="javascript:void(0)">' + this.roomNameKor + '</a></li>');
+                            
+                            if (!isEmpty(this.mapImg)) {
+                                ext = this.mapImg.split('.');
+                                tmp.find('div > div').append('<img src="' + this.mapImgId + '.' + ext[1] + '" alt="' + this.roomNameKor + '" />');
+                            } else {
+                                tmp.find('div > div').append('<img src="" alt="' + this.roomNameKor + '" />');
+                            }
+                            
+                            if (!isEmpty(this.bgImg)) {
+                                ext = this.bgImg.split('.');
+                                tmp.find('div.cont_bg').append('<img src="' + this.bgImgId + '.' + ext[1] + '" alt="' + this.roomNameKor + '" />');
+                            } else {
+                                tmp.find('div.cont_bg').append('<img src="" alt="' + this.roomNameKor + '" />');
+                            }
+                        });
+                    }
+                    
+                    $('div.main > ul #mainOrg').remove();
+                    $('div.center > ul #centerOrg').remove();
+                    $('div.kid > ul #kidOrg').remove();
+                    
+                    $('div.main > ul > li.on ul li:last').addClass('on');
+                    $('div.kid > ul > li.on ul li:last').addClass('on');
+                    $('div.center > ul > li.on ul li:last').addClass('on');
+
+                    if (mainCnt > 0) {
+                        $('div.main').show();
+                        $('.floor_select img:eq(1)').css({'opacity':'1', 'display':'block'});			
+                    } else {
+                        $('div.main').hide();
+                    }
+                    
+                    if (healthCnt > 0 && mainCnt < 1) {
+                        $('div.center').show();
+                        $('.floor_select img:eq(0)').css({'opacity':'1', 'display':'inline'});
+                    } else {
+                        $('div.center').hide();
+                    }
+                    
+                    if (kidsCnt > 0 && healthCnt < 1 && mainCnt < 1) {
+                        $('div.kid').show();
+                        $('.floor_select img:eq(2)').css({'opacity':'1', 'display':'block'});
+                    } else {
+                        $('div.kid').hide();
+                    }			
+                });
+            }
+            function isEmpty(s) {
+                if (s == null || s == undefined || s == "" || (""+s).trim().length == 0 || s == "NULL") {
+                    return true;
+                }
+
+                return false;
+            }
+          function listAjaxCall(_url, data, listCallBack) {
+                // if (data == '') {
+                // 	data = {};
+                // }
+
+                // 채용공고에서 locationType에 따라 list 보여주는게 달라지기 때문에,
+                // locationType 값이 공백일때만, page LocationType 값을 넣어준다.
+                // if (data.locationType != 0 && isEmpty(data.locationType)) {
+                // 	var LOCATION_URL = localStorage.getItem('LOCATION_URL');
+                // 	if (LOCATION_URL != null) {
+                // 		if (LOCATION_URL == 'sweb') {
+                // 			data.locationType = 1;
+                // 		} else if (LOCATION_URL == 'wweb') {
+                // 			data.locationType = 2; 
+                // 		} else if (LOCATION_URL == 'en') {
+                // 			data.locationType = 3; 
+                // 		} else if (LOCATION_URL == 'cn') {
+                // 			data.locationType = 5; 
+                // 		} else if (LOCATION_URL == 'ru') {
+                // 			data.locationType = 4; 
+                // 		}
+                // 	}
+                // }
+                
+                $.ajax({
+                    url: "/wp-content/uploads/2020/11/list.json",
+                    type: 'GET',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json; charset=UTF-8',
+                    dataType: 'json',
+                    async : false,
+                    success: function(result) {
+                        listCallBack(result);
+                    },
+                    error: function(xhr, status, error) {
+                        commError(xhr);
+                    }
+                });	
+            }
         }
       )(jQuery);
 </script>
