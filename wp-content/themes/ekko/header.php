@@ -88,7 +88,12 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="profile" href="http://gmpg.org/xfn/11">
       <link rel="pingback" href="<?php esc_url(bloginfo( 'pingback_url' )); ?>" />
+	  <meta name="naver-site-verification" content="b02a31bfdf88979661854005c84e4b674645f991" />
+	  <meta name="naver-site-verification" content="6f6edfc5ab96bed249fc8dce44221940eacedc37" />
+      <meta name="naver-site-verification" content="57ecaf8718314158acc0ff1373281421a0becb0f" />
+	  <meta name="google-site-verification" content="EC-1nco-XtlxOQn9WcRGddkcWv7zPtRQlP1lExKu31k" />
       <?php wp_head(); ?>
+	  <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
    </head>
     <body <?php body_class();?>>
       <?php wp_body_open(); ?>

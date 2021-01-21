@@ -1,0 +1,1344 @@
+<style>
+    .history_list ol {
+    list-style: none;
+    }
+    .history_list {
+      width: 970px;
+      margin: 38px auto 0;
+    }
+    .history_list dl {
+      margin-top: 11px;
+    }
+    .history_list dl dt {
+      position: relative;
+      color: #666;
+      font-size: 26px;
+      line-height: 40px;
+    }
+    /* .history_list dl dt:before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 3px;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #929292;
+      transform: rotate(-45deg);
+      z-index: 1;
+      transition: 0.5s;
+    }
+    .history_list dl dt:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 3px;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #929292;
+      transform: rotate(-135deg);
+      z-index: 1;
+      transition: 0.5s;
+    } */
+    .history_list dl dt span {
+      position: relative;
+      display: block;
+      padding-right: 840px;
+      text-align: right;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .history_list dl dt span:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 46px;
+      left: 154px;
+      height: 1px;
+      background-color: #545f63;
+    }
+    .history_list dl.on dt {
+      color: #c1a06a;
+    }
+    .history_list dl.on dt:before {
+      top: 17px;
+      border-left: 2px solid #c1a06a;
+      transform: rotate(45deg);
+    }
+    .history_list dl.on dt:after {
+      top: 17px;
+      border-left: 2px solid #c1a06a;
+      transform: rotate(135deg);
+    }
+    .history_list dl.on dt span:before {
+      background-color: #c1a06a;
+    }
+    /* 2018-06-08 천혜성 */
+    .history_list dl dd {
+      overflow: hidden;
+      position: relative;
+      padding: 21px 0 0 156px;
+    }
+    .history_list dl dd ol li {
+      position: relative;
+      color: #fff;
+      font-weight: 300;
+      line-height: 36px;
+    }
+    /* // 2018-06-08 천혜성 */
+    .history_list dl dd ol li span {
+      position: absolute;
+      top: 0;
+      left: -127px;
+      width: 100px;
+      text-align: right;
+    }
+    .history_list dl:first-child .swiper_history {
+      top: 80px;
+    }
+    .history_list .swiper_history {
+      position: absolute;
+      top: 31px;
+      right: 33px;
+      width: 340px;
+      padding: 0 34px 0 33px;
+    }
+    .history_list .swiper_history .swiper-container {
+      overflow: hidden;
+    }
+    /* .history_list .swiper_history p {position:relative; padding:12px 0 0 50px; color:#ccc; font-weight:300; line-height:26px;}
+        .history_list .swiper_history p span {position:absolute; left:10px;} */
+    .history_list .swiper_history p {
+      position: relative;
+      padding-top: 12px;
+      color: #ccc;
+      font-weight: 300;
+      line-height: 26px;
+      text-align: center;
+    }
+    
+    .history_list .swiper_history .swiper-button-next,
+    .history_list .swiper_history .swiper-button-prev {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 200px;
+      margin-top: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .history_list .swiper_history img {
+      width: 270px;
+      height: 200px;
+    }
+    .history_list .swiper_history .swiper-button-next {
+      right: 0;
+    }
+    .history_list .swiper_history .swiper-button-prev {
+      left: 0;
+    }
+    .history_list .swiper_history .swiper-button-next:before {
+      content: "";
+      position: absolute;
+      top: 89px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid white;
+      transform: rotate(-135deg);
+    }
+    .history_list .swiper_history .swiper-button-next:after {
+      content: "";
+      position: absolute;
+      top: 89px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid white;
+      transform: rotate(135deg);
+    }
+    .history_list .swiper_history .swiper-button-prev:before {
+      content: "";
+      position: absolute;
+      top: 89px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #ffffff;
+      transform: rotate(-45deg);
+    }
+    .history_list .swiper_history .swiper-button-prev:after {
+      content: "";
+      position: absolute;
+      top: 89px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #ffffff;
+      transform: rotate(45deg);
+    }
+    .miz_wrap
+      .miz_cont03
+      .history_list
+      .swiper_history
+      .swiper-button-next.swiper-button-disabled,
+    .miz_wrap
+      .miz_cont03
+      .history_list
+      .swiper_history
+      .swiper-button-prev.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: auto;
+    }
+    
+    .miz_wrap .miz_cont04 {
+      padding: 120px 120px 350px 120px;
+      background-image: url(../images/index/news_back.png);
+      background-color: rgba(76, 76, 76, 0.8);
+    }
+    .miz_wrap .miz_cont04 h3 {
+      color: #fff;
+      font-size: 44px;
+      font-weight: 300;
+      line-height: 48px;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont04 p {
+      text-align: center;
+      margin-top: 20px;
+      color: #bd9d67;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 32px;
+    }
+    .miz_wrap .miz_cont04 h3 span {
+      color: #cea869;
+      font-weight: 700;
+    }
+    .miz_wrap .miz_cont04-bottom {
+      padding-bottom: 130px;
+      background: #f0f3f5;
+    }
+    .miz_wrap .miz_cont04-bottom > ul {
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li {
+      float: left;
+      display: inline-block;
+      width: 250px;
+      border: 1px solid rgba(76, 76, 76, 1);
+      margin-top: -251px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:hover {
+      transform: scaleY(-10px);
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:not(:last-child) {
+      margin-right: 20px;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li .mainimg {
+      display: block;
+      width: 250px;
+      height: 250px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(76, 76, 76, 1);
+    }
+    .miz_wrap .miz_cont04-bottom > ul li img {
+      width: 100%;
+    }
+    /* .miz_wrap .miz_cont04-bottom > ul li span {
+      color: white;
+      font-weight: 300;
+      font-size: 12px;
+    } */
+    .miz_wrap .miz_cont04-bottom > ul li {
+      transition: all 0.2s ease-out;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:hover {
+      transform: translateY(-10px);
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:nth-child(1) .mc03_box .mainimg {
+      background-image: url(../images/index/30_korea.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:nth-child(2) .mc03_box .mainimg {
+      background-image: url(../images/index/new2.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:nth-child(3) .mc03_box .mainimg {
+      background-image: url(../images/index/new3.jpg);
+      background-size: cover;
+      background-position: center;
+    }
+    .miz_wrap .miz_cont04-bottom > ul li:nth-child(4) .mc03_box .mainimg {
+      background-image: url(../images/index/new4.png);
+      background-size: cover;
+      background-position: center;
+    }
+    .mc03_txt {
+      position: relative;
+    }
+    /* .mc03_txt p {
+      text-align: left;
+      padding: 10px;
+      font-size: 14px;
+    } */
+    .mc03_txt p {
+      background-color: white;
+    }
+    .p1 {
+      text-align: left;
+      padding: 15px 10px 0px;
+      font-weight: 700;
+    }
+    .p1 a {
+      font-size: 14px;
+    }
+    .p2 {
+      text-align: left;
+      font-size: 12px;
+      padding: 5px 10px 10px;
+      line-height: 18px;
+    }
+    .kamc__tag {
+      display: inline-block;
+      padding: 0px 10px;
+      color: white;
+      position: absolute;
+      font-size: 12px;
+      top: -12px;
+      left: 10px;
+    }
+    .tag--brown {
+      background-color: #bd9d67;
+    }
+    .mc03_txt .p1 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .miz_wrap .miz_cont04-bottom > ul::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .miz_wrap .miz_cont04 .ci_story {
+      overflow: hidden;
+      background-color: #f0f4f7;
+    }
+    .miz_wrap .miz_cont04 .ci_story > div {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .miz_wrap .miz_cont04 .ci_story .img_box {
+      overflow: hidden;
+      float: left;
+      width: 370px;
+      height: 515px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .img_box img {
+      width: 300%;
+      margin: -17% 0 0 -95%;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box {
+      float: right;
+      width: 790px;
+      margin-top: 73px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box h4 {
+      color: #000;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box p {
+      margin-top: 12px;
+      color: #454545;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 36px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap {
+      margin-top: 44px;
+      text-align: left;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap button {
+      margin-left: 4px;
+      width: 200px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap button:first-child {
+      margin-left: 0;
+    }
+    
+    .miz_wrap .miz_cont05 {
+      position: relative;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 .txt_box {
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      width: 1200px;
+      margin-left: -600px;
+      text-align: center;
+      z-index: 1;
+    }
+    .miz_wrap .miz_cont05 .txt {
+      padding: 120px 0px 50px;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 h3 {
+      color: #000;
+      font-size: 44px;
+      font-weight: 300;
+      line-height: 48px;
+    }
+    .miz_wrap .miz_cont05 .address__wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .miz_wrap .miz_cont05 .address {
+      width: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f8f8;
+      border: 1px solid #dfdfdf;
+    }
+    .address--detail {
+      width: 70%;
+      text-align: center;
+      padding: 50px 0;
+    }
+    .address--detail span {
+      display: block;
+    }
+    .address--detail .title {
+      font-size: 24px;
+      font-weight: 300;
+    }
+    .address--detail .subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      margin-top: 15px;
+    }
+    .address--button {
+      width: 30%;
+      text-align: center;
+    }
+    .address--button a {
+      display: inline-block;
+      padding: 10px 50px;
+      color: white;
+      background-color: #192f40;
+    }
+    .map__wrapper {
+      display: inline-flex;
+      width: 1000px;
+      justify-content: center;
+      align-items: center;
+    }
+    .maps {
+      margin-top: 15px;
+      height: 400px;
+      width: 1000px;
+    }
+    .miz_wrap .miz_cont05 {
+      padding-bottom: 120px;
+    }
+    .miz_wrap .miz_cont05 .txt_box h3 span {
+      color: #cea869;
+      font-weight: 700;
+    }
+    .miz_wrap .miz_cont05 .txt_box p {
+      margin-top: 21px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont05 .txt_box .txt {
+      margin-top: 83px;
+      color: #c1a06a;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont05 .txt_box a {
+      display: inline-block;
+      margin-top: 38px;
+    }
+    .miz_wrap .miz_cont05 > video {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1920px;
+      height: 900px;
+      margin-left: -960px;
+    }
+    .miz_wrap .miz_cont05 > iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 900px;
+    } /* 2018-06-25 천혜성 - 수정 */
+    .miz_wrap .miz_cont05 .swiper_video {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      width: 1024px;
+      margin-left: -512px;
+      padding: 0 56px 0 47px;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-container {
+      overflow: hidden;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-slide a {
+      display: block;
+    }
+    .miz_wrap .miz_cont05 .swiper_video span {
+      display: inline-block;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 46px;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next,
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 108px;
+      margin-top: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next {
+      right: 0;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev {
+      left: 0;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next:before {
+      content: "";
+      position: absolute;
+      top: 43px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(-135deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next:after {
+      content: "";
+      position: absolute;
+      top: 43px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(135deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev:before {
+      content: "";
+      position: absolute;
+      top: 43px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(-45deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev:after {
+      content: "";
+      position: absolute;
+      top: 43px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(45deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next.swiper-button-disabled,
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: auto;
+    }
+    
+    .miz_wrap .brochure_down {
+      overflow: hidden;
+      height: 99px;
+      background-color: #c1a06a;
+      text-align: center;
+    }
+    .miz_wrap .brochure_down > div {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .miz_wrap .brochure_down h4 {
+      position: relative;
+      display: inline-block;
+      margin-right: 43px;
+      padding: 0 52px 0 43px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 99px;
+      background: url("../images/common/bg_brochure.png") no-repeat 0 50%;
+    }
+    .miz_wrap .brochure_down h4:before {
+      content: "";
+      position: absolute;
+      top: 40px;
+      right: 0;
+      width: 1px;
+      height: 17px;
+      background-color: #cdb690;
+    }
+    .miz_wrap .brochure_down a {
+      margin-left: 63px;
+      padding-right: 30px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 99px;
+      background: url("../images/common/icon_download02.png") no-repeat 100% 50%;
+    }
+    .miz_wrap .brochure_down h4 + a {
+      margin-left: 0;
+    }
+    
+    /* intro */
+    #container.intro {
+      padding: 0;
+    }
+    .swiper_intro {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 100%;
+      background-color: #000;
+    }
+    .swiper_intro .btn_wrap {
+      position: absolute;
+      bottom: 225px;
+      left: 50%;
+      width: 1200px;
+      height: auto;
+      margin-left: -600px;
+      z-index: 1;
+    }
+    .swiper_intro .btn_wrap button {
+      height: 52px;
+      margin-left: 1px;
+      padding: 0 32px;
+      color: #fff;
+      font-size: 18px;
+      line-height: 50px;
+      border: 1px solid #676767;
+      transition: 1.5s;
+    }
+    /* 2018-06-15 천혜성 */
+    .swiper_intro .btn_wrap button:hover,
+    .swiper_intro .btn_wrap button.on {
+      background-color: #c1a06a;
+      border: 1px solid #c1a06a;
+      transition: 1.5s;
+    }
+    /* // 2018-06-15 천혜성 */
+    /* 2018-06-20 천혜성 */
+    .swiper_intro > div {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    .swiper_intro > div > ul > li {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+    .swiper_intro > div > ul > li:first-child {
+      display: block;
+    }
+    .swiper_intro > div > ul > li video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      overflow: hidden;
+    }
+    .swiper_intro > div > ul > li iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .swiper_intro > div > ul > li .txt_box {
+      position: absolute;
+      bottom: 385px;
+      left: 50%;
+      width: 1200px;
+      margin-left: -600px;
+      text-align: center;
+    } /* 2018-06-08 천혜성 */
+    .swiper_intro > div > ul > li .txt_box span {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .swiper_intro > div > ul > li .txt_box strong {
+      display: block;
+      margin-top: 36px;
+    }
+    .swiper_intro > div > ul > li .txt_box p {
+      margin-top: 32px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 28px;
+    }
+    .swiper_intro .btn_next,
+    .swiper_intro .btn_prev {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 960px;
+      margin-top: 0;
+      background: none;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .swiper_intro .btn_next {
+      right: 40px;
+    }
+    .swiper_intro .btn_prev {
+      left: 40px;
+    }
+    .swiper_intro .btn_next:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(-135deg);
+    }
+    .swiper_intro .btn_next:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(135deg);
+    }
+    .swiper_intro .btn_prev:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(-45deg);
+    }
+    .swiper_intro .btn_prev:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(45deg);
+    }
+    .swiper_intro .btn_next.swiper-button-disabled,
+    .swiper_intro .btn_prev.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: auto;
+    }/* .mc03_txt p {
+      text-align: left;
+      padding: 10px;
+      font-size: 14px;
+    } */
+    .mc03_txt p {
+      background-color: white;
+    }
+    .p1 {
+      text-align: left;
+      padding: 15px 10px 0px;
+      font-weight: 700;
+    }
+    .p1 a {
+      font-size: 14px;
+    }
+    .p2 {
+      text-align: left;
+      font-size: 12px;
+      padding: 5px 10px 10px;
+      line-height: 18px;
+    }
+    .kamc__tag {
+      display: inline-block;
+      padding: 0px 10px;
+      color: white;
+      position: absolute;
+      font-size: 12px;
+      top: -12px;
+      left: 10px;
+    }
+    .tag--brown {
+      background-color: #bd9d67;
+    }
+    .mc03_txt .p1 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .miz_wrap .miz_cont04-bottom > ul::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .miz_wrap .miz_cont04 .ci_story {
+      overflow: hidden;
+      background-color: #f0f4f7;
+    }
+    .miz_wrap .miz_cont04 .ci_story > div {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .miz_wrap .miz_cont04 .ci_story .img_box {
+      overflow: hidden;
+      float: left;
+      width: 370px;
+      height: 515px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .img_box img {
+      width: 300%;
+      margin: -17% 0 0 -95%;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box {
+      float: right;
+      width: 790px;
+      margin-top: 73px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box h4 {
+      color: #000;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box p {
+      margin-top: 12px;
+      color: #454545;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 36px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap {
+      margin-top: 44px;
+      text-align: left;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap button {
+      margin-left: 4px;
+      width: 200px;
+    }
+    .miz_wrap .miz_cont04 .ci_story .txt_box .btn_wrap button:first-child {
+      margin-left: 0;
+    }
+    
+    .miz_wrap .miz_cont05 {
+      position: relative;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 .txt_box {
+      position: absolute;
+      top: 130px;
+      left: 50%;
+      width: 1200px;
+      margin-left: -600px;
+      text-align: center;
+      z-index: 1;
+    }
+    .miz_wrap .miz_cont05 .txt {
+      padding: 120px 0px 50px;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 h3 {
+      color: #000;
+      font-size: 44px;
+      font-weight: 300;
+      line-height: 48px;
+    }
+    .miz_wrap .miz_cont05 .address__wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .miz_wrap .miz_cont05 .address {
+      width: 1000px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f8f8;
+      border: 1px solid #dfdfdf;
+    }
+    .address--detail {
+      width: 70%;
+      text-align: center;
+      padding: 50px 0;
+    }
+    .address--detail span {
+      display: block;
+    }
+    .address--detail .title {
+      font-size: 24px;
+      font-weight: 300;
+    }
+    .address--detail .subtitle {
+      font-size: 18px;
+      font-weight: 300;
+      margin-top: 15px;
+    }
+    .address--button {
+      width: 30%;
+      text-align: center;
+    }
+    .address--button a {
+      display: inline-block;
+      padding: 10px 50px;
+      color: white;
+      background-color: #192f40;
+    }
+    .map__wrapper {
+      display: inline-flex;
+      width: 1000px;
+      justify-content: center;
+      align-items: center;
+    }
+    .maps {
+      margin-top: 15px;
+      height: 400px;
+      width: 1000px;
+    }
+    .miz_wrap .miz_cont05 {
+      padding-bottom: 120px;
+    }
+    .miz_wrap .miz_cont05 .txt_box h3 span {
+      color: #cea869;
+      font-weight: 700;
+    }
+    .miz_wrap .miz_cont05 .txt_box p {
+      margin-top: 21px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont05 .txt_box .txt {
+      margin-top: 83px;
+      color: #c1a06a;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 38px;
+    }
+    .miz_wrap .miz_cont05 .txt_box a {
+      display: inline-block;
+      margin-top: 38px;
+    }
+    .miz_wrap .miz_cont05 > video {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1920px;
+      height: 900px;
+      margin-left: -960px;
+    }
+    .miz_wrap .miz_cont05 > iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 900px;
+    } /* 2018-06-25 천혜성 - 수정 */
+    .miz_wrap .miz_cont05 .swiper_video {
+      position: absolute;
+      bottom: 120px;
+      left: 50%;
+      width: 1024px;
+      margin-left: -512px;
+      padding: 0 56px 0 47px;
+      text-align: center;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-container {
+      overflow: hidden;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-slide a {
+      display: block;
+    }
+    .miz_wrap .miz_cont05 .swiper_video span {
+      display: inline-block;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 46px;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next,
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 108px;
+      margin-top: 0;
+      background: none;
+      cursor: pointer;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next {
+      right: 0;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev {
+      left: 0;
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next:before {
+      content: "";
+      position: absolute;
+      top: 43px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(-135deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next:after {
+      content: "";
+      position: absolute;
+      top: 43px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(135deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev:before {
+      content: "";
+      position: absolute;
+      top: 43px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(-45deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev:after {
+      content: "";
+      position: absolute;
+      top: 43px;
+      left: 0;
+      width: 16px;
+      height: 16px;
+      border-left: 2px solid #888;
+      transform: rotate(45deg);
+    }
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-next.swiper-button-disabled,
+    .miz_wrap .miz_cont05 .swiper_video .swiper-button-prev.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: auto;
+    }
+    
+    .miz_wrap .brochure_down {
+      overflow: hidden;
+      height: 99px;
+      background-color: #c1a06a;
+      text-align: center;
+    }
+    .miz_wrap .brochure_down > div {
+      width: 1200px;
+      margin: 0 auto;
+    }
+    .miz_wrap .brochure_down h4 {
+      position: relative;
+      display: inline-block;
+      margin-right: 43px;
+      padding: 0 52px 0 43px;
+      color: #fff;
+      font-size: 16px;
+      line-height: 99px;
+      background: url("../images/common/bg_brochure.png") no-repeat 0 50%;
+    }
+    .miz_wrap .brochure_down h4:before {
+      content: "";
+      position: absolute;
+      top: 40px;
+      right: 0;
+      width: 1px;
+      height: 17px;
+      background-color: #cdb690;
+    }
+    .miz_wrap .brochure_down a {
+      margin-left: 63px;
+      padding-right: 30px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 99px;
+      background: url("../images/common/icon_download02.png") no-repeat 100% 50%;
+    }
+    .miz_wrap .brochure_down h4 + a {
+      margin-left: 0;
+    }
+    
+    /* intro */
+    #container.intro {
+      padding: 0;
+    }
+    .swiper_intro {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      overflow: hidden;
+      height: 100%;
+      background-color: #000;
+    }
+    .swiper_intro .btn_wrap {
+      position: absolute;
+      bottom: 225px;
+      left: 50%;
+      width: 1200px;
+      height: auto;
+      margin-left: -600px;
+      z-index: 1;
+    }
+    .swiper_intro .btn_wrap button {
+      height: 52px;
+      margin-left: 1px;
+      padding: 0 32px;
+      color: #fff;
+      font-size: 18px;
+      line-height: 50px;
+      border: 1px solid #676767;
+      transition: 1.5s;
+    }
+    /* 2018-06-15 천혜성 */
+    .swiper_intro .btn_wrap button:hover,
+    .swiper_intro .btn_wrap button.on {
+      background-color: #c1a06a;
+      border: 1px solid #c1a06a;
+      transition: 1.5s;
+    }
+    /* // 2018-06-15 천혜성 */
+    /* 2018-06-20 천혜성 */
+    .swiper_intro > div {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    .swiper_intro > div > ul > li {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+    .swiper_intro > div > ul > li:first-child {
+      display: block;
+    }
+    .swiper_intro > div > ul > li video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      overflow: hidden;
+    }
+    .swiper_intro > div > ul > li iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .swiper_intro > div > ul > li .txt_box {
+      position: absolute;
+      bottom: 385px;
+      left: 50%;
+      width: 1200px;
+      margin-left: -600px;
+      text-align: center;
+    } /* 2018-06-08 천혜성 */
+    .swiper_intro > div > ul > li .txt_box span {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .swiper_intro > div > ul > li .txt_box strong {
+      display: block;
+      margin-top: 36px;
+    }
+    .swiper_intro > div > ul > li .txt_box p {
+      margin-top: 32px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 28px;
+    }
+    .swiper_intro .btn_next,
+    .swiper_intro .btn_prev {
+      position: absolute;
+      top: 0;
+      width: 24px;
+      height: 960px;
+      margin-top: 0;
+      background: none;
+      cursor: pointer;
+      z-index: 1;
+    }
+    .swiper_intro .btn_next {
+      right: 40px;
+    }
+    .swiper_intro .btn_prev {
+      left: 40px;
+    }
+    .swiper_intro .btn_next:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(-135deg);
+    }
+    .swiper_intro .btn_next:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(135deg);
+    }
+    .swiper_intro .btn_prev:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(-45deg);
+    }
+    .swiper_intro .btn_prev:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 36px;
+      height: 36px;
+      border-left: 2px solid #a6a6a6;
+      transform: rotate(45deg);
+    }
+    .swiper_intro .btn_next.swiper-button-disabled,
+    .swiper_intro .btn_prev.swiper-button-disabled {
+      opacity: 0.35;
+      cursor: auto;
+    }
+    </style>
+    <div class="history_list">
+                  <dl>
+                    <dt>
+                      <span>1988~2020</span>
+                    </dt>
+                    <dd>
+                      <ol>
+                        <li>
+                          <span>2020</span>
+                          수술센터 신설 및 수술실 증설 <br />
+                          (정형외과 수술실, 신경외과 수술실, <br />
+                          일반 외과 수술실, 복강경 및 안과 수술실)<br />
+                          전염병 감염관리 입원 치료 병동 증축<br />
+                          대형견 입원실 증축<br />
+                          고양이 중환자 입원실 증축<br />
+                          중환자 케어센터 및 응급환자 케어 센터 신설<br />
+                        </li>
+    
+                        <li>
+                          <span>2019</span>
+                          1.5T Canon MRI 도입<br />
+                        </li>
+    
+                        <li>
+                          <span>2018</span>
+                          ISFM cat friendly clinic Gold level 인증<br />
+                          고려동물메디컬센터 Cat clinic 개원<br />
+                          응급의학과 분과 <br />
+                          고려동물메디컬센터 개원 30주년<br>
+                        </li>
+                        <li>
+                          <span>2017</span>
+                          ISFM Cat friendly clinic Gold level 인증<br />
+                        </li>
+                        <li>
+                          <span>2016</span>
+                          16 channel MDCT(Siemens SOMATOM scope)<br />
+                        </li>
+                        <li>
+                          <span>2015</span>
+                          CRRT(Continuous renal replacement therapy) 투석 장비
+                          도입<br />
+                        </li>
+                        <li>
+                          <span>2014</span>
+                          고려동물메디컬센터 확장 이전<br />
+                        </li>
+                        <li>
+                          <span>2012</span>
+                          C-arm(Digital fluoroscopy 이동형 투시장치) 도입<br />
+                        </li>
+                        <li>
+                          <span>2002</span>
+                          영상의학과 증설<br />
+                        </li>
+                        <li>
+                          <span>1998</span>
+                          내과 및 외과 증설<br />
+                        </li>
+                        <li>
+                          <span>1994</span>
+                          고려종합동물병원 확장 이전<br />
+                        </li>
+                        <li><span>1988</span>고려애견종합병원 개원<br /></li>
+                      </ol>
+                    </dd>
+                  </dl>
+                </div>

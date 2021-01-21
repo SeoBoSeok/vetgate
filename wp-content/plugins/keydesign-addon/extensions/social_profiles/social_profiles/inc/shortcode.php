@@ -44,6 +44,7 @@ if ( !class_exists ( 'reduxSocialProfilesShortcode' ) ) {
                     }
                 }
             }
+            $html .= '<li style="list-style: none;"><a target="_blank" href="https://blog.naver.com/kamcsince1988"><img src="/wp-content/uploads/2020/12/Blog_128.png" width="28px" height="28px" alt="네이버 블로그" class="naver_blog"></li>';
             $html .= '</ul>';
 
             return $html;
